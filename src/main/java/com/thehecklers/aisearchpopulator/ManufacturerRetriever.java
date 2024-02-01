@@ -18,16 +18,16 @@ public class ManufacturerRetriever {
     @Value("${aircraft.application.id}")
     private String appId;
 
-    @Value("${aircraft.master.key}")
-    private String masterKey;
+    @Value("${aircraft.api.key}")
+    private String apiKey;
 
     @PostConstruct
     public void retrieve() {
         try {
             URL url = new URL(aircraftUrl);
             HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
-            urlConnection.setRequestProperty("X-Parse-Application-Id", appId); // This is the fake app's application id
-            urlConnection.setRequestProperty("X-Parse-Master-Key", masterKey); // This is the fake app's readonly master key
+            urlConnection.setRequestProperty("X-Parse-Application-Id", appId); // This is your app's application id
+            urlConnection.setRequestProperty("X-Parse-REST-API-Key", apiKey);
             try {
                 BufferedReader reader = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
                 StringBuilder stringBuilder = new StringBuilder();
