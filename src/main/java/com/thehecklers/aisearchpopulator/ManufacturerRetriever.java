@@ -38,14 +38,14 @@ public class ManufacturerRetriever {
             urlConnection.setRequestProperty("X-Parse-REST-API-Key", apiKey);
             try {
                 BufferedReader reader = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
-                StringBuilder stringBuilder = new StringBuilder();
+                var stringBuilder = new StringBuilder();
                 String line;
                 while ((line = reader.readLine()) != null) {
                     stringBuilder.append(line);
                 }
-                JSONObject data = new JSONObject(stringBuilder.toString());
+                var data = new JSONObject(stringBuilder.toString());
                 data.getJSONArray("results").forEach(o -> {
-                    JSONObject manufacturer = (JSONObject) o;
+                    var manufacturer = (JSONObject) o;
                     manufacturers.add(manufacturer.getString("Manufacturer"));
                 });
                 manufacturers.forEach(System.out::println);
