@@ -26,6 +26,10 @@ public class ManufacturerRetriever {
 
     private final List<String> manufacturers = new ArrayList<>();
 
+    public List<String> getManufacturers() {
+        return manufacturers;
+    }
+
     @PostConstruct
     public void retrieve() {
         try {
