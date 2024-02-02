@@ -24,25 +24,8 @@ public class TypeRetriever {
                 .retrieve()
                 .body(new ParameterizedTypeReference<List<Aircraft>>() {
                 });
-        System.out.println(aircraftList);
 
-//        System.out.println(client.get()
-//                .uri("?manufacturer=Cessna&limit=2")
-//                .header("X-Api-Key", apiKey)
-//                .retrieve()
-//                .body(String.class));
-
-//        mfrRetriever.getManufacturers().forEach(mfr -> {
-//            System.out.println("\n\n\n Types of " + mfr + ":");
-//
-//            var body = client.get()
-//                    .uri("?manufacturer={mfr}&limit={limit}", mfr, 2)
-//                    .header("X-Api-Key", apiKey)
-//                    .retrieve()
-//                    .body(String.class);
-//
-//            System.out.println(body);
-//        });
+        //System.out.println(aircraftList);
 
         return aircraftList;
     }

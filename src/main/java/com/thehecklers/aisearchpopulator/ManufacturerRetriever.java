@@ -31,11 +31,15 @@ public class ManufacturerRetriever {
     }
 
     public List<String> getManufacturers() {
+        if (manufacturers.isEmpty()) {
+            retrieve();
+        }
         return manufacturers;
     }
 
-    @PostConstruct
-    public void retrieve() {
+//    @PostConstruct
+//    public void retrieve() {
+    private Iterable<String> retrieve() {
         try {
             HttpURLConnection urlConnection = (HttpURLConnection) new URL(properties.makerUrl()).openConnection();
             urlConnection.setRequestProperty("X-Parse-Application-Id", properties.makerApplicationId());
@@ -60,5 +64,7 @@ public class ManufacturerRetriever {
         } catch (Exception e) {
             System.out.println("Error: " + e.toString());
         }
+
+        return manufacturers;
     }
 }
