@@ -19,7 +19,8 @@ public class AiSearchPopulator {
     public void populate() {
         manufacturerRetriever.getManufacturers()
                 .forEach(mfr -> {
-                    var types = typeRetriever.retrieve(mfr, 2);
+                    // Thirty is the max for this API
+                    var types = typeRetriever.retrieve(mfr, 30);
                     if (types.iterator().hasNext()) {
                         filer.writeToFile(mfr + ".txt", types);
                     }
