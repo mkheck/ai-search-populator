@@ -25,8 +25,6 @@ public class TypeRetriever {
                 .body(new ParameterizedTypeReference<List<Aircraft>>() {
                 });
 
-        //System.out.println(aircraftList);
-
         return aircraftList;
     }
 }
