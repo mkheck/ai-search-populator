@@ -5,6 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 @WebMvcTest(value = {TypeRetriever.class, AircraftProperties.class})
@@ -17,8 +19,49 @@ class TypeRetrieverTest {
 
     @Test
     void retrieve() {
-        String expectedResponse = "[{\"manufacturer\": \"Cessna Aircraft Company\", \"model\": \"Citation Longitude\", \"engine_type\": \"Jet\", \"engine_thrust_lb_ft\": \"7665\", \"max_speed_knots\": \"560\", \"cruise_speed_knots\": \"483\", \"ceiling_ft\": \"45000\", \"rate_of_climb_ft_per_min\": \"2550\", \"takeoff_ground_run_ft\": \"4810\", \"landing_ground_roll_ft\": \"2595\", \"gross_weight_lbs\": \"39500\", \"empty_weight_lbs\": \"23600\", \"length_ft\": \"73.167\", \"height_ft\": \"19.417\", \"wing_span_ft\": \"68.917\", \"range_nautical_miles\": \"3500\"}]";
-        String actualResponse = typeRetriever.retrieve();
-        assertEquals(expectedResponse, actualResponse);
+        Aircraft expectedAircraft1 = new Aircraft(
+                "Cessna Aircraft Company",
+                "Citation Longitude",
+                "Jet",
+                "7665",
+                "560",
+                "483",
+                "45000",
+                "2550",
+                "4810",
+                "2595",
+                "39500",
+                "23600",
+                "73.167",
+                "19.417",
+                "68.917",
+                "3500",
+                null,
+                null
+        );
+
+        Aircraft expectedAircraft2 = new Aircraft(
+                "Cessna Aircraft Company",
+                "750 Citation X",
+                "Jet",
+                "6400",
+                "613",
+                "511",
+                "51000",
+                "3720",
+                null,
+                null,
+                "35700",
+                "21400",
+                "72.167",
+                "18.75",
+                "63.75",
+                "3250",
+                "5710",
+                "3820"
+        );
+
+        Iterable<Aircraft> actualAircraft = typeRetriever.retrieve("Cessna", 2);
+        assertEquals(List.of(expectedAircraft1, expectedAircraft2), actualAircraft);
     }
 }
