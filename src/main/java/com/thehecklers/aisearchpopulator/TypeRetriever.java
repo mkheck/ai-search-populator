@@ -1,35 +1,25 @@
 package com.thehecklers.aisearchpopulator;
 
-import jakarta.annotation.PostConstruct;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestClient;
 
 @Component
 public class TypeRetriever {
-    @Value("${aircraft.type.url}")
-    private String typeUrl;
-    @Value("${aircraft.type.api.key}")
-    private String apiKey;
-
     private final ManufacturerRetriever mfrRetriever;
+    private final AircraftProperties properties;
 
-    public TypeRetriever(ManufacturerRetriever mfrRetriever) {
+    private final RestClient client;
+
+    public TypeRetriever(ManufacturerRetriever mfrRetriever, AircraftProperties properties) {
         this.mfrRetriever = mfrRetriever;
-//        retrieve();
+        this.properties = properties;
+        client = RestClient.create(properties.typeUrl());
     }
 
-//    @PostConstruct
-//    public void init() {
-//        retrieve();
-//    }
-
     public String retrieve() {
-        RestClient client = RestClient.create(typeUrl);
-
         String body = client.get()
                 .uri("?manufacturer=Cessna&limit=1")
-                .header("X-Api-Key", apiKey)
+                .header("X-Api-Key", properties.typeApiKey())
                 .retrieve()
                 .body(String.class);
         System.out.println(body);

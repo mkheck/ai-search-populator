@@ -15,16 +15,20 @@ import java.util.List;
 
 @Component
 public class ManufacturerRetriever {
-    @Value("${aircraft.maker.url}")
-    private String aircraftUrl;
-    @Value("${aircraft.maker.application.id}")
-    private String appId;
-    @Value("${aircraft.maker.api.key}")
-    private String apiKey;
+//    @Value("${aircraft.maker.url}")
+//    private String aircraftUrl;
+//    @Value("${aircraft.maker.application.id}")
+//    private String appId;
+//    @Value("${aircraft.maker.api.key}")
+//    private String apiKey;
 
-    private final RestClient client = RestClient.create();
+    private final AircraftProperties properties;
 
     private final List<String> manufacturers = new ArrayList<>();
+
+    public ManufacturerRetriever(AircraftProperties properties) {
+        this.properties = properties;
+    }
 
     public List<String> getManufacturers() {
         return manufacturers;
@@ -33,9 +37,9 @@ public class ManufacturerRetriever {
     @PostConstruct
     public void retrieve() {
         try {
-            HttpURLConnection urlConnection = (HttpURLConnection) new URL(aircraftUrl).openConnection();
-            urlConnection.setRequestProperty("X-Parse-Application-Id", appId);
-            urlConnection.setRequestProperty("X-Parse-REST-API-Key", apiKey);
+            HttpURLConnection urlConnection = (HttpURLConnection) new URL(properties.makerUrl()).openConnection();
+            urlConnection.setRequestProperty("X-Parse-Application-Id", properties.makerApplicationId());
+            urlConnection.setRequestProperty("X-Parse-REST-API-Key", properties.makerApiKey());
             try {
                 BufferedReader reader = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
                 var stringBuilder = new StringBuilder();
