@@ -15,11 +15,11 @@ import java.util.List;
 
 @Component
 public class ManufacturerRetriever {
-    @Value("${aircraft.url}")
+    @Value("${aircraft.maker.url}")
     private String aircraftUrl;
-    @Value("${aircraft.application.id}")
+    @Value("${aircraft.maker.application.id}")
     private String appId;
-    @Value("${aircraft.api.key}")
+    @Value("${aircraft.maker.api.key}")
     private String apiKey;
 
     private final RestClient client = RestClient.create();

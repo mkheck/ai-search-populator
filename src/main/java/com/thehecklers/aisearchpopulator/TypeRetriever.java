@@ -16,18 +16,42 @@ public class TypeRetriever {
 
     public TypeRetriever(ManufacturerRetriever mfrRetriever) {
         this.mfrRetriever = mfrRetriever;
+//        retrieve();
     }
 
-    @PostConstruct
-    public void retrieve() {
-        System.out.println("\n\n\n Types of " + mfrRetriever.getManufacturers().getFirst() + ":");
+//    @PostConstruct
+//    public void init() {
+//        retrieve();
+//    }
 
+    public String retrieve() {
         RestClient client = RestClient.create(typeUrl);
 
-        System.out.println(client.get()
-                .uri("?manufacturer={mfr}&limit=30", mfrRetriever.getManufacturers().getFirst())
+        String body = client.get()
+                .uri("?manufacturer=Cessna&limit=1")
                 .header("X-Api-Key", apiKey)
                 .retrieve()
-                .body(String.class));
+                .body(String.class);
+        System.out.println(body);
+
+//        System.out.println(client.get()
+//                .uri("?manufacturer=Cessna&limit=2")
+//                .header("X-Api-Key", apiKey)
+//                .retrieve()
+//                .body(String.class));
+
+//        mfrRetriever.getManufacturers().forEach(mfr -> {
+//            System.out.println("\n\n\n Types of " + mfr + ":");
+//
+//            var body = client.get()
+//                    .uri("?manufacturer={mfr}&limit={limit}", mfr, 2)
+//                    .header("X-Api-Key", apiKey)
+//                    .retrieve()
+//                    .body(String.class);
+//
+//            System.out.println(body);
+//        });
+
+        return body;
     }
 }
