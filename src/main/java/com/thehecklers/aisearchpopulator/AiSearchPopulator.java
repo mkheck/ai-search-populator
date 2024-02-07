@@ -9,10 +9,13 @@ public class AiSearchPopulator {
     private final TypeRetriever typeRetriever;
     private final Filer filer;
 
-    public AiSearchPopulator(ManufacturerRetriever manufacturerRetriever, TypeRetriever typeRetriever, Filer filer) {
+    private final VectorFeeder vectorFeeder;
+
+    public AiSearchPopulator(ManufacturerRetriever manufacturerRetriever, TypeRetriever typeRetriever, Filer filer, VectorFeeder vectorFeeder) {
         this.manufacturerRetriever = manufacturerRetriever;
         this.typeRetriever = typeRetriever;
         this.filer = filer;
+        this.vectorFeeder = vectorFeeder;
     }
 
     @PostConstruct
@@ -23,6 +26,7 @@ public class AiSearchPopulator {
                     var types = typeRetriever.retrieve(mfr, 30);
                     if (types.iterator().hasNext()) {
                         filer.writeToFile(mfr + ".txt", types);
+                        vectorFeeder.store(types);
                     }
                 });
     }
