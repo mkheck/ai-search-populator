@@ -79,7 +79,8 @@ class VectorFeederTest {
     void store() {
         vectorFeeder.store(List.of(expectedAircraft1, expectedAircraft2));
 
-        documentList.forEach(System.out::println);
+        //Just for visual confirmation ;)
+        //documentList.forEach(System.out::println);
 
         assertEquals(vectorStore.similaritySearch("Cessna Aircraft Company"), documentList);
     }
