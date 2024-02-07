@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
+import java.util.Map;
 
 @Component
 public class VectorFeeder {
@@ -17,41 +17,38 @@ public class VectorFeeder {
     }
 
     public void store(Iterable<Aircraft> aircraft) {
-        var aircraftMap = new HashMap<String, Object>();
         var documents = new ArrayList<Document>();
 
-        aircraft.forEach(a -> {
-            aircraftMap.clear();
-
-            aircraftMap.put("manufacturer", a.manufacturer());
-            aircraftMap.put("model", a.model());
-            aircraftMap.put("engine_type", a.engine_type());
-            aircraftMap.put("engine_thrust_lb_ft", a.engine_thrust_lb_ft());
-            aircraftMap.put("max_speed_knots", a.max_speed_knots());
-            aircraftMap.put("cruise_speed_knots", a.cruise_speed_knots());
-            aircraftMap.put("ceiling_ft", a.ceiling_ft());
-            aircraftMap.put("rate_of_climb_ft_per_min", a.rate_of_climb_ft_per_min());
-            aircraftMap.put("takeoff_ground_run_ft", a.takeoff_ground_run_ft());
-            aircraftMap.put("landing_ground_roll_ft", a.landing_ground_roll_ft());
-            aircraftMap.put("gross_weight_lbs", a.gross_weight_lbs());
-            aircraftMap.put("empty_weight_lbs", a.empty_weight_lbs());
-            aircraftMap.put("length_ft", a.length_ft());
-            aircraftMap.put("height_ft", a.height_ft());
-            aircraftMap.put("wing_span_ft", a.wing_span_ft());
-            aircraftMap.put("range_nautical_miles", a.range_nautical_miles());
-            aircraftMap.put("takeoff_over_50ft_ft", a.takeoff_over_50ft_ft());
-            aircraftMap.put("landing_over_50ft_ft", a.landing_over_50ft_ft());
-
-            documents.add(new Document(a.toString(), aircraftMap));
-//            documents.add(new Document(UUID.randomUUID().toString(), a.toString(), aircraftMap));
-
-            System.out.println("Stored document: " + documents.getLast().toString());
-        });
+        aircraft.forEach(a -> documents.add(new Document(a.toString(), createMapFromAircraft(a))));
 
         if (!documents.isEmpty()) {
             System.out.println("Storing " + documents.size() + " documents");
-            //vectorStore.add(List.copyOf(documents));
             vectorStore.add(documents);
         }
+    }
+
+    public Map<String, Object> createMapFromAircraft(Aircraft aircraft) {
+        var aircraftMap = new HashMap<String, Object>();
+
+        aircraftMap.put("manufacturer", aircraft.manufacturer());
+        aircraftMap.put("model", aircraft.model());
+        aircraftMap.put("engine_type", aircraft.engine_type());
+        aircraftMap.put("engine_thrust_lb_ft", aircraft.engine_thrust_lb_ft());
+        aircraftMap.put("max_speed_knots", aircraft.max_speed_knots());
+        aircraftMap.put("cruise_speed_knots", aircraft.cruise_speed_knots());
+        aircraftMap.put("ceiling_ft", aircraft.ceiling_ft());
+        aircraftMap.put("rate_of_climb_ft_per_min", aircraft.rate_of_climb_ft_per_min());
+        aircraftMap.put("takeoff_ground_run_ft", aircraft.takeoff_ground_run_ft());
+        aircraftMap.put("landing_ground_roll_ft", aircraft.landing_ground_roll_ft());
+        aircraftMap.put("gross_weight_lbs", aircraft.gross_weight_lbs());
+        aircraftMap.put("empty_weight_lbs", aircraft.empty_weight_lbs());
+        aircraftMap.put("length_ft", aircraft.length_ft());
+        aircraftMap.put("height_ft", aircraft.height_ft());
+        aircraftMap.put("wing_span_ft", aircraft.wing_span_ft());
+        aircraftMap.put("range_nautical_miles", aircraft.range_nautical_miles());
+        aircraftMap.put("takeoff_over_50ft_ft", aircraft.takeoff_over_50ft_ft());
+        aircraftMap.put("landing_over_50ft_ft", aircraft.landing_over_50ft_ft());
+
+        return aircraftMap;
     }
 }
