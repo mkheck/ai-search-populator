@@ -6,21 +6,21 @@ public record Aircraft(
         String manufacturer,
         String model,
         String engineType,
-        String engineThrustLbFt,
-        String maxSpeedKnots,
-        String cruiseSpeedKnots,
-        String ceilingFt,
-        String rateOfClimbFtPerMin,
-        String takeoffGroundRunFt,
-        String landingGroundRollFt,
-        String grossWeightLbs,
-        String emptyWeightLbs,
-        String lengthFt,
-        String heightFt,
-        String wingSpanFt,
-        String rangeNauticalMiles,
-        String takeoffOver50ftFt,
-        String landingOver50ftFt
+        Integer engineThrustLbFt,
+        Integer maxSpeedKnots,
+        Integer cruiseSpeedKnots,
+        Integer ceilingFt,
+        Integer rateOfClimbFtPerMin,
+        Integer takeoffGroundRunFt,
+        Integer landingGroundRollFt,
+        Integer grossWeightLbs,
+        Integer emptyWeightLbs,
+        Float lengthFt,
+        Float heightFt,
+        Float wingSpanFt,
+        Integer rangeNauticalMiles,
+        Integer takeoffOver50ftFt,
+        Integer landingOver50ftFt
 ) {
         // Clean up the many, many nulls inbound on which VectorStore chokes
         public Aircraft(String manufacturer, 
@@ -28,52 +28,52 @@ public record Aircraft(
                         @JsonProperty("engine_type")
                         String engineType,
                         @JsonProperty("engine_thrust_lb_ft")
-                        String engineThrustLbFt,
+                        Integer engineThrustLbFt,
                         @JsonProperty("max_speed_knots")
-                        String maxSpeedKnots,
+                        Integer maxSpeedKnots,
                         @JsonProperty("cruise_speed_knots")
-                        String cruiseSpeedKnots,
+                        Integer cruiseSpeedKnots,
                         @JsonProperty("ceiling_ft")
-                        String ceilingFt,
+                        Integer ceilingFt,
                         @JsonProperty("rate_of_climb_ft_per_min")
-                        String rateOfClimbFtPerMin,
+                        Integer rateOfClimbFtPerMin,
                         @JsonProperty("takeoff_ground_run_ft")
-                        String takeoffGroundRunFt,
+                        Integer takeoffGroundRunFt,
                         @JsonProperty("landing_ground_roll_ft")
-                        String landingGroundRollFt,
+                        Integer landingGroundRollFt,
                         @JsonProperty("gross_weight_lbs")
-                        String grossWeightLbs,
+                        Integer grossWeightLbs,
                         @JsonProperty("empty_weight_lbs")
-                        String emptyWeightLbs,
+                        Integer emptyWeightLbs,
                         @JsonProperty("length_ft")
-                        String lengthFt,
+                        Float lengthFt,
                         @JsonProperty("height_ft")
-                        String heightFt,
+                        Float heightFt,
                         @JsonProperty("wing_span_ft")
-                        String wingSpanFt,
+                        Float wingSpanFt,
                         @JsonProperty("range_nautical_miles")
-                        String rangeNauticalMiles,
+                        Integer rangeNauticalMiles,
                         @JsonProperty("takeoff_over_50ft_ft")
-                        String takeoffOver50ftFt,
+                        Integer takeoffOver50ftFt,
                         @JsonProperty("landing_over_50ft_ft")
-                        String landingOver50ftFt) {
+                        Integer landingOver50ftFt) {
                 this.manufacturer = manufacturer;
                 this.model = model;
                 this.engineType = null == engineType ? "UNSPECIFIED" : engineType;
-                this.engineThrustLbFt = null == engineThrustLbFt ? "0" : engineThrustLbFt;
-                this.maxSpeedKnots = null == maxSpeedKnots ? "0" : maxSpeedKnots;
-                this.cruiseSpeedKnots = null == cruiseSpeedKnots ? "0" : cruiseSpeedKnots;
-                this.ceilingFt = null == ceilingFt ? "0" : ceilingFt;
-                this.rateOfClimbFtPerMin = null == rateOfClimbFtPerMin ? "0" : rateOfClimbFtPerMin;
-                this.takeoffGroundRunFt = null == takeoffGroundRunFt ? "0" : takeoffGroundRunFt;
-                this.landingGroundRollFt = null == landingGroundRollFt ? "0" : landingGroundRollFt;
-                this.grossWeightLbs = null == grossWeightLbs ? "0" : grossWeightLbs;
-                this.emptyWeightLbs = null == emptyWeightLbs ? "0" : emptyWeightLbs;
-                this.lengthFt = null == lengthFt ? "0" : lengthFt;
-                this.heightFt = null == heightFt ? "0" : heightFt;
-                this.wingSpanFt = null == wingSpanFt ? "0" : wingSpanFt;
-                this.rangeNauticalMiles = null == rangeNauticalMiles ? "0" : rangeNauticalMiles;
-                this.takeoffOver50ftFt = null == takeoffOver50ftFt ? "0" : takeoffOver50ftFt;
-                this.landingOver50ftFt = null == landingOver50ftFt ? "0" : landingOver50ftFt;
+                this.engineThrustLbFt = null == engineThrustLbFt ? -1 : engineThrustLbFt;
+                this.maxSpeedKnots = null == maxSpeedKnots ? -1 : maxSpeedKnots;
+                this.cruiseSpeedKnots = null == cruiseSpeedKnots ? -1 : cruiseSpeedKnots;
+                this.ceilingFt = null == ceilingFt ? -1 : ceilingFt;
+                this.rateOfClimbFtPerMin = null == rateOfClimbFtPerMin ? -1 : rateOfClimbFtPerMin;
+                this.takeoffGroundRunFt = null == takeoffGroundRunFt ? -1 : takeoffGroundRunFt;
+                this.landingGroundRollFt = null == landingGroundRollFt ? -1 : landingGroundRollFt;
+                this.grossWeightLbs = null == grossWeightLbs ? -1 : grossWeightLbs;
+                this.emptyWeightLbs = null == emptyWeightLbs ? -1 : emptyWeightLbs;
+                this.lengthFt = null == lengthFt ? -1F : lengthFt;
+                this.heightFt = null == heightFt ? -1F : heightFt;
+                this.wingSpanFt = null == wingSpanFt ? -1F : wingSpanFt;
+                this.rangeNauticalMiles = null == rangeNauticalMiles ? -1 : rangeNauticalMiles;
+                this.takeoffOver50ftFt = null == takeoffOver50ftFt ? -1 : takeoffOver50ftFt;
+                this.landingOver50ftFt = null == landingOver50ftFt ? -1 : landingOver50ftFt;
         }
 }
