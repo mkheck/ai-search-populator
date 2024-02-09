@@ -32,22 +32,22 @@ public class VectorFeeder {
 
         aircraftMap.put("manufacturer", aircraft.manufacturer());
         aircraftMap.put("model", aircraft.model());
-        aircraftMap.put("engine_type", aircraft.engine_type());
-        aircraftMap.put("engine_thrust_lb_ft", aircraft.engine_thrust_lb_ft());
-        aircraftMap.put("max_speed_knots", aircraft.max_speed_knots());
-        aircraftMap.put("cruise_speed_knots", aircraft.cruise_speed_knots());
-        aircraftMap.put("ceiling_ft", aircraft.ceiling_ft());
-        aircraftMap.put("rate_of_climb_ft_per_min", aircraft.rate_of_climb_ft_per_min());
-        aircraftMap.put("takeoff_ground_run_ft", aircraft.takeoff_ground_run_ft());
-        aircraftMap.put("landing_ground_roll_ft", aircraft.landing_ground_roll_ft());
-        aircraftMap.put("gross_weight_lbs", aircraft.gross_weight_lbs());
-        aircraftMap.put("empty_weight_lbs", aircraft.empty_weight_lbs());
-        aircraftMap.put("length_ft", aircraft.length_ft());
-        aircraftMap.put("height_ft", aircraft.height_ft());
-        aircraftMap.put("wing_span_ft", aircraft.wing_span_ft());
-        aircraftMap.put("range_nautical_miles", aircraft.range_nautical_miles());
-        aircraftMap.put("takeoff_over_50ft_ft", aircraft.takeoff_over_50ft_ft());
-        aircraftMap.put("landing_over_50ft_ft", aircraft.landing_over_50ft_ft());
+        aircraftMap.put("engineType", aircraft.engineType());
+        aircraftMap.put("engineThrustLbFt", aircraft.engineThrustLbFt());
+        aircraftMap.put("maxSpeedKnots", aircraft.maxSpeedKnots());
+        aircraftMap.put("cruiseSpeedKnots", aircraft.cruiseSpeedKnots());
+        aircraftMap.put("ceilingFt", aircraft.ceilingFt());
+        aircraftMap.put("rateOfClimbFtPerMin", aircraft.rateOfClimbFtPerMin());
+        aircraftMap.put("takeoffGroundRunFt", aircraft.takeoffGroundRunFt());
+        aircraftMap.put("landingGroundRollFt", aircraft.landingGroundRollFt());
+        aircraftMap.put("grossWeightLbs", aircraft.grossWeightLbs());
+        aircraftMap.put("emptyWeightLbs", aircraft.emptyWeightLbs());
+        aircraftMap.put("lengthFt", aircraft.lengthFt());
+        aircraftMap.put("heightFt", aircraft.heightFt());
+        aircraftMap.put("wingSpanFt", aircraft.wingSpanFt());
+        aircraftMap.put("rangeNauticalMiles", aircraft.rangeNauticalMiles());
+        aircraftMap.put("takeoffOver50ftFt", aircraft.takeoffOver50ftFt());
+        aircraftMap.put("landingOver50ftFt", aircraft.landingOver50ftFt());
 
         return aircraftMap;
     }

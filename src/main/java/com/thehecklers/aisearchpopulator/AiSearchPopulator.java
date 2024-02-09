@@ -26,7 +26,7 @@ public class AiSearchPopulator {
                     var types = typeRetriever.retrieve(mfr, 30);
                     if (types.iterator().hasNext()) {
                         filer.writeToFile(mfr + ".txt", types);
-                        vectorFeeder.store(types);
+                        //vectorFeeder.store(types);
                     }
                 });
     }
