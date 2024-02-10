@@ -1,6 +1,5 @@
 package com.thehecklers.aisearchpopulator;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.Objects;
@@ -25,7 +24,7 @@ public class Aircraft {
     private Integer takeoffOver50ftFt;
     private Integer landingOver50ftFt;
 
-    //@JsonCreator
+    // MUCH sanitizing of input data was required
     public Aircraft(String manufacturer,
                     String model,
                     @JsonProperty("engine_type") String engineType,
