@@ -30,24 +30,24 @@ public class VectorFeeder {
     public Map<String, Object> createMapFromAircraft(Aircraft aircraft) {
         var aircraftMap = new HashMap<String, Object>();
 
-        aircraftMap.put("manufacturer", aircraft.manufacturer());
-        aircraftMap.put("model", aircraft.model());
-        aircraftMap.put("engineType", aircraft.engineType());
-        aircraftMap.put("engineThrustLbFt", aircraft.engineThrustLbFt());
-        aircraftMap.put("maxSpeedKnots", aircraft.maxSpeedKnots());
-        aircraftMap.put("cruiseSpeedKnots", aircraft.cruiseSpeedKnots());
-        aircraftMap.put("ceilingFt", aircraft.ceilingFt());
-        aircraftMap.put("rateOfClimbFtPerMin", aircraft.rateOfClimbFtPerMin());
-        aircraftMap.put("takeoffGroundRunFt", aircraft.takeoffGroundRunFt());
-        aircraftMap.put("landingGroundRollFt", aircraft.landingGroundRollFt());
-        aircraftMap.put("grossWeightLbs", aircraft.grossWeightLbs());
-        aircraftMap.put("emptyWeightLbs", aircraft.emptyWeightLbs());
-        aircraftMap.put("lengthFt", aircraft.lengthFt());
-        aircraftMap.put("heightFt", aircraft.heightFt());
-        aircraftMap.put("wingSpanFt", aircraft.wingSpanFt());
-        aircraftMap.put("rangeNauticalMiles", aircraft.rangeNauticalMiles());
-        aircraftMap.put("takeoffOver50ftFt", aircraft.takeoffOver50ftFt());
-        aircraftMap.put("landingOver50ftFt", aircraft.landingOver50ftFt());
+        aircraftMap.put("manufacturer", aircraft.getManufacturer());
+        aircraftMap.put("model", aircraft.getModel());
+        aircraftMap.put("engineType", aircraft.getEngineType());
+        aircraftMap.put("engineThrustLbFt", aircraft.getEngineThrustLbFt());
+        aircraftMap.put("maxSpeedKnots", aircraft.getMaxSpeedKnots());
+        aircraftMap.put("cruiseSpeedKnots", aircraft.getCruiseSpeedKnots());
+        aircraftMap.put("ceilingFt", aircraft.getCeilingFt());
+        aircraftMap.put("rateOfClimbFtPerMin", aircraft.getRateOfClimbFtPerMin());
+        aircraftMap.put("takeoffGroundRunFt", aircraft.getTakeoffGroundRunFt());
+        aircraftMap.put("landingGroundRollFt", aircraft.getLandingGroundRollFt());
+        aircraftMap.put("grossWeightLbs", aircraft.getGrossWeightLbs());
+        aircraftMap.put("emptyWeightLbs", aircraft.getEmptyWeightLbs());
+        aircraftMap.put("lengthFt", aircraft.getLengthFt());
+        aircraftMap.put("heightFt", aircraft.getHeightFt());
+        aircraftMap.put("wingSpanFt", aircraft.getWingSpanFt());
+        aircraftMap.put("rangeNauticalMiles", aircraft.getRangeNauticalMiles());
+        aircraftMap.put("takeoffOver50ftFt", aircraft.getTakeoffOver50ftFt());
+        aircraftMap.put("landingOver50ftFt", aircraft.getLandingOver50ftFt());
 
         return aircraftMap;
     }

@@ -33,8 +33,8 @@ class VectorFeederTest {
                 "Citation Longitude",
                 "Jet",
                 7665,
-                560,
-                483,
+                560F,
+                "483",
                 45000,
                 2550,
                 4810,
@@ -44,7 +44,7 @@ class VectorFeederTest {
                 73.167F,
                 19.417F,
                 68.917F,
-                3500,
+                "3500",
                 0,
                 0);
 

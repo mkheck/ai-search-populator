@@ -22,8 +22,8 @@ class FilerTest {
                 "Citation Longitude",
                 "Jet",
                 7665,
-                560,
-                483,
+                560F,
+                "483",
                 45000,
                 2550,
                 4810,
@@ -33,7 +33,7 @@ class FilerTest {
                 73.167F,
                 19.417F,
                 68.917F,
-                3500,
+                "3500",
                 null,
                 null);
 
@@ -42,8 +42,8 @@ class FilerTest {
                 "750 Citation X",
                 "Jet",
                 6400,
-                613,
-                511,
+                613F,
+                "511 kts",
                 51000,
                 3720,
                 null,
@@ -53,7 +53,7 @@ class FilerTest {
                 72.167F,
                 18.75F,
                 63.75F,
-                3250,
+                "3250+",
                 5710,
                 3820);
 
